@@ -16,6 +16,7 @@ import {
   PRODUCT_CREATE_SUCCESS,
   PRODUCT_CREATE_FAILS,
 } from "../constants/productConstant";
+import { BaseUrl } from "../BaseUrl";
 
 export const newProduct = (productData) => async (dispatch) => {
   console.log(productData);
@@ -27,7 +28,7 @@ export const newProduct = (productData) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      "/admin/product/new",
+      `${BaseUrl}/admin/product/new`,
       productData,
       config
     );
@@ -44,7 +45,7 @@ export const newProduct = (productData) => async (dispatch) => {
 export const listProducts = (keyword='', currentPage=1) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
-    const response = await axios.get(`/products?keyword=${keyword}&page=${currentPage}`);
+    const response = await axios.get(`${BaseUrl}/products?keyword=${keyword}&page=${currentPage}`);
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: response.data,
@@ -63,7 +64,7 @@ export const listProducts = (keyword='', currentPage=1) => async (dispatch) => {
 export const adminProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_ADMIN_REQUEST });
-    const {data} = await axios.get("/admin/products");
+    const {data} = await axios.get(`${BaseUrl}/admin/products`);
     dispatch({
       type: PRODUCT_ADMIN_SUCCESS,
       payload: data
@@ -84,7 +85,7 @@ export const adminProducts = () => async (dispatch) => {
 export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
-    const response = await axios.get(`/product/${id}`);
+    const response = await axios.get(`${BaseUrl}/product/${id}`);
 
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: response.data.product });
   } catch (error) {
@@ -100,7 +101,7 @@ export const listProductDetails = (id) => async (dispatch) => {
 export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
-    const response = await axios.delete(`/admin/product/${id}`);
+    const response = await axios.delete(`${BaseUrl}/admin/product/${id}`);
 
     dispatch({ type: DELETE_PRODUCT_SUCCESS,
        payload: response.data.success });

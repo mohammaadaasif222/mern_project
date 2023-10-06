@@ -6,7 +6,8 @@
   "scripts": {
     "start": "SET NODE_ENV=PRODUCTION& node backend/server",
     "seeder": "node backend/utils/seeder",
-    "build":"npm install"
+    "build":"npm install",
+    "dev":"SET NODE_ENV=DEVELOPMENT& nodemon backend/server"
   },
   "author": "",
   "license": "ISC",

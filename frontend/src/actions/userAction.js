@@ -1,4 +1,5 @@
 import axios from "axios";
+import { BaseUrl } from "../BaseUrl";
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstant";
 import {
   USER_DETAILS_FAIL,
@@ -29,7 +30,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({ type: USER_LOGIN_REQUEST });
     const config = { headers: { "Contnet-Type": "application/json" } };
     const { data } = await axios.post(
-      "/users/login",
+      `${BaseUrl}/users/login`,
       { email, password },
       config
     );
@@ -54,7 +55,7 @@ export const register = (formData) => async (dispatch) => {
     dispatch({ type: USER_REGISTER_REQUEST });
     const config = { headers: { "Contnet-Type": "application/json" } };
     const { data } = await axios.post(
-      "/users",
+      `${BaseUrl}/users`,
       formData,
       config
     );
@@ -96,7 +97,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.get(
-      `/users/${id}`,
+      `${BaseUrl}/users/${id}`,
       config
     );
    
@@ -130,7 +131,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.put(
-      `/users/profile`,
+      `${BaseUrl}/users/profile`,
       user,
       config
     );

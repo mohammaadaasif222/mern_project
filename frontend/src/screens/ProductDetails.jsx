@@ -16,7 +16,7 @@ const ProductDetails = ({ history, match }) => {
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
-  const {  product } = productDetails;
+  const { product } = productDetails;
 
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
@@ -33,9 +33,12 @@ const ProductDetails = ({ history, match }) => {
       </Link>
 
       <Row>
-        <Col md={6}>
-          <Image src={product.images[0].url} alt={product.name} fluid />
-        </Col>
+        {product.images && (
+          <Col md={6}>
+            <Image src={product.images[0].url} alt={product.name} fluid />
+          </Col>
+        )}
+
         <Col md={3}>
           <ListGroup variant="flush">
             <ListGroupItem>
@@ -55,9 +58,7 @@ const ProductDetails = ({ history, match }) => {
           <ListGroupItem>
             <Row>
               <Col>Status :</Col>
-              <Col>
-                {product.stock > 0 ? "In Stock " : "out of stock"}
-              </Col>
+              <Col>{product.stock > 0 ? "In Stock " : "out of stock"}</Col>
             </Row>
           </ListGroupItem>
           {product.stock > 0 && (
