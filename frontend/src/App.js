@@ -36,7 +36,7 @@ function App() {
             <Route path="/profile" component={ProfileScreen} />
             <Route path="/register" component={RegisterScreen} />
             <Route path="/cart/:id?" component={CartScreen} />
-            <Route path="/product/:id" component={ProductDetails} />
+            <Route path="/productDetails/:id" component={ProductDetails} />
             <Route path="/" component={HomeScreen} exact />
             <Route path="/search/:keyword" component={HomeScreen} exact />
 

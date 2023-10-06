@@ -34,7 +34,7 @@ const ProductDetails = ({ history, match }) => {
 
       <Row>
         <Col md={6}>
-          <Image src={product.image} alt={product.name} fluid />
+          <Image src={product.images[0].url} alt={product.name} fluid />
         </Col>
         <Col md={3}>
           <ListGroup variant="flush">
