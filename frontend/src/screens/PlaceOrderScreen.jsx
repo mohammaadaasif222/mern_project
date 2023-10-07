@@ -79,10 +79,10 @@ const PlaceOrderScreen = ({ history }) => {
                     <ListGroup.Item key={index}>
                       <Row>
                         <Col md={1}>
-                          <Image src={item.image} alt={item.name} fluid />
+                          <Image src={item.image[0].url} alt={item.name} fluid />
                         </Col>
                         <Col>
-                          <Link to={`/product/${item.product}`}>
+                          <Link to={`/productDetails/${item.product}`}>
                             {item.name}
                           </Link>
                         </Col>
