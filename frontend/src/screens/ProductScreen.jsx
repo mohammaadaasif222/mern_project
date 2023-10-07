@@ -14,7 +14,7 @@ const ProductScreen = ({ product }) => {
           
         </Link>
         <Card.Body>
-          <Link to={`/product/${product._id}`}>
+          <Link to={`/productDetails/${product._id}`}>
             <Card.Title as="div">
               <strong>{product.name}</strong>
             </Card.Title>
